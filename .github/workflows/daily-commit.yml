@@ -1,0 +1,31 @@
+name: Daily Automated Commit
+
+on:
+  schedule:
+    # Runs at 08:30 UTC every day (Specific hour and minute, no wildcards)
+    - cron: '30 8 * * *'
+  # Allows you to trigger the workflow manually for immediate verification
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  daily-update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Requirement: Step name includes your specific email
+      - name: Update log and commit for 22f3000722@ds.study.iitm.ac.in
+        run: |
+          # Create or update a log file
+          echo "Automated daily sync completed on $(date)" >> devsync-activity.log
+          
+          # Configure Git and commit the change
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add devsync-activity.log
+          git commit -m "chore: automated daily activity tracking"
+          git push
