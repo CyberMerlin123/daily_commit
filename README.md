@@ -1,0 +1,1 @@
+[![Daily Automated Commit](https://github.com/CyberMerlin123/daily_commit/actions/workflows/daily-commit.yml/badge.svg)](https://github.com/CyberMerlin123/daily_commit/actions/workflows/daily-commit.yml)
